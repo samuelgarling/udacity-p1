@@ -1,0 +1,279 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sam's Movies!</title>
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        table {
+            margin-left: auto;
+            margin-right: auto;
+            border-collapse: collapse;
+        }
+        td, th {
+            padding: 0.5rem;
+            text-align: left;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .movie-tile:hover blockquote{
+            border-left: 5px solid #FFF;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Sam Garling's Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="KYz2wyBy3kc" data-toggle="modal" data-target="#trailer">
+    <h2>Toy Story</h2>
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTgwMjI4MzU5N15BMl5BanBnXkFtZTcwMTMyNTk3OA@@._V1_SY317_CR12,0,214,317_AL_.jpg" width="220" height="342">
+    <blockquote>A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.</blockquote>
+    <table>
+        <thead>
+            <tr>
+                <th>Actor</th>
+                <th>Character</th>
+            </tr>
+        </thead>
+    
+<tr>
+<td>Tom Hanks</td>
+<td>Woody</td>
+</tr>
+
+<tr>
+<td>Tim Allen</td>
+<td>Buzz Lightyear</td>
+</tr>
+
+    </table>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="5PSNL1qE6VY" data-toggle="modal" data-target="#trailer">
+    <h2>Avatar</h2>
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SY317_CR0,0,214,317_AL_.jpg" width="220" height="342">
+    <blockquote>A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.</blockquote>
+    <table>
+        <thead>
+            <tr>
+                <th>Actor</th>
+                <th>Character</th>
+            </tr>
+        </thead>
+    
+<tr>
+<td>Sam Worthington</td>
+<td>Jake Sully</td>
+</tr>
+
+<tr>
+<td>Zoe Saldana</td>
+<td>Neytiri</td>
+</tr>
+
+    </table>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="o6AyAM1buQ8" data-toggle="modal" data-target="#trailer">
+    <h2>Gone in Sixty Seconds</h2>
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTIwMzExNDEwN15BMl5BanBnXkFtZTYwODMxMzg2._V1_SY317_CR1,0,214,317_AL_.jpg" width="220" height="342">
+    <blockquote>A retired master car thief must come back to the industry and steal 50 cars with his crew in one night to save his brother's life.</blockquote>
+    <table>
+        <thead>
+            <tr>
+                <th>Actor</th>
+                <th>Character</th>
+            </tr>
+        </thead>
+    
+<tr>
+<td>Nicolas Cage</td>
+<td>Memphis Raines</td>
+</tr>
+
+<tr>
+<td>Angelina Jolie</td>
+<td>Sara 'Sway' Waland</td>
+</tr>
+
+<tr>
+<td>Giovanni Ribisi</td>
+<td>Kip Raines</td>
+</tr>
+
+    </table>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="w_Ky4KPzKwY" data-toggle="modal" data-target="#trailer">
+    <h2>The Man from U.N.C.L.E.</h2>
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTc2NjQ4ODYyNF5BMl5BanBnXkFtZTgwODA3OTU5NTE@._V1_SX214_AL_.jpg" width="220" height="342">
+    <blockquote>In the early 1960s, CIA agent Napoleon Solo and KGB operative Illya Kuryakin participate in a joint mission against a mysterious criminal organization, which is working to proliferate nuclear weapons.</blockquote>
+    <table>
+        <thead>
+            <tr>
+                <th>Actor</th>
+                <th>Character</th>
+            </tr>
+        </thead>
+    
+<tr>
+<td>Henry Cavill</td>
+<td>Solo</td>
+</tr>
+
+    </table>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="qas5lWp7_R0" data-toggle="modal" data-target="#trailer">
+    <h2>Up</h2>
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTk3NDE2NzI4NF5BMl5BanBnXkFtZTgwNzE1MzEyMTE@._V1_SX214_AL_.jpg" width="220" height="342">
+    <blockquote>Seventy-eight year old Carl Fredricksen travels to Paradise Falls in his home equipped with balloons, inadvertently taking a young stowaway.</blockquote>
+    <table>
+        <thead>
+            <tr>
+                <th>Actor</th>
+                <th>Character</th>
+            </tr>
+        </thead>
+    
+<tr>
+<td>Edward Asner</td>
+<td>Carl Fredericksen</td>
+</tr>
+
+<tr>
+<td>Christopher Plummer</td>
+<td>Charles Muntz</td>
+</tr>
+
+    </table>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="c1-jFLlHLPw" data-toggle="modal" data-target="#trailer">
+    <h2>Zombieland</h2>
+    <img src="http://ia.media-imdb.com/images/M/MV5BMTU5MDg0NTQ1N15BMl5BanBnXkFtZTcwMjA4Mjg3Mg@@._V1_SY317_CR6,0,214,317_AL_.jpg" width="220" height="342">
+    <blockquote>A shy student trying to reach his family in Ohio, a gun-toting tough guy trying to find the last Twinkie, and a pair of sisters trying to get to an amusement park join forces to travel across a zombie-filled America.</blockquote>
+    <table>
+        <thead>
+            <tr>
+                <th>Actor</th>
+                <th>Character</th>
+            </tr>
+        </thead>
+    
+<tr>
+<td>Jesse Eisenberg</td>
+<td>Columbus</td>
+</tr>
+
+<tr>
+<td>Woody Harrelson</td>
+<td>Tallahassee</td>
+</tr>
+
+<tr>
+<td>Emma Stone</td>
+<td>Wichita</td>
+</tr>
+
+<tr>
+<td>Abigail Breslin</td>
+<td>Little Rock</td>
+</tr>
+
+    </table>
+</div>
+
+    </div>
+  </body>
+</html>
