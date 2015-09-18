@@ -9,12 +9,12 @@ There are no other special requirements.
 
 ### What's Included:
 
-'''
+```
 Sam's Movies - P1/
 ├── media.py
 ├── fresh_tomatoes.py
 ├── entertainment_centre.py
-'''
+```
 
 Created by Sam Garling in conjunction with the Programming Foundations with Python course by Udacity.
 01/09/2015
